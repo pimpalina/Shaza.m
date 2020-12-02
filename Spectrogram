@@ -1,0 +1,12 @@
+% to niby ma być ten spectrogram z blackboxa %
+pkg load signal
+data=dlmread('blabla.ext',',',1,0);
+d_gyro = data(:,20:22); % 
+Fs=2e3; % 2khz blackbox, PID frequency
+Ws=2*pi*Fs;
+x=d_gyro(:,1);
+step=ceil(10*Fs/1000); % slice for every 10ms
+window=ceil(300*Fs/1000);
+fftn=2^nextpow2(window);
+figure
+specgram(x,fftn,Fs,window,window-step);
