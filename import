@@ -1,0 +1,9 @@
+clear all;
+clc;
+close all;
+%filename = input('Podaj nazwe pliku wraz z rozszerzeniem ', 's')
+waitfor(msgbox('Prosze wybrac plik audio z komputera'))
+[baseName, folder] = uigetfile();
+filename=fullfile(folder, baseName)
+waitfor(msgbox(sprintf('Wybrales plik: %s', filename)))
+[y, fs] = audioread (filename);
